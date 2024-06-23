@@ -155,7 +155,7 @@ export const Marks = ({ address, share }: { address?: string; share?: boolean })
         return;
       }
       const res = await addMark(provider, {
-        label: shortString.encodeShortString(value.title),
+        label: value.title,
         url: shortLinkData?.data?.tiny_url
       });
       console.log(res, "res");
@@ -193,10 +193,10 @@ export const Marks = ({ address, share }: { address?: string; share?: boolean })
               </>
             )}
           </div>
-          <div className={"grid grid-cols-3 gap-6"}>
+          <div className={"grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6"}>
             {list?.map((it, i) => {
               return (
-                <a rel={"noreferrer"} href={it.url} key={i} target={"_blank"} className={"flex items-center gap-2"}>
+                <a rel={"noreferrer"} href={it.url} key={i} target={"_blank"} className={"flex items-center justify-center gap-2"}>
                   <div className={"text-center"}>{it.title}</div>
                   <ExternalLink size={16} />
                 </a>
