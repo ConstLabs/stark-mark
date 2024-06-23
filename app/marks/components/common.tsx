@@ -107,13 +107,13 @@ const ShareModal = () => {
   return (
     <>
       <Button color={"secondary"} onPress={onOpen} >
-        Share Mark
+        Share Marks
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Share Mark</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">Share Marks</ModalHeader>
               <ModalBody>
                 <Input type="text" readOnly label="Share Link" placeholder="Enter mark url" value={url} endContent={
                   <div role="button" className="flex items-center cursor-pointer" onClick={() => {
@@ -197,7 +197,7 @@ export const Marks = ({ address, share }: { address?: string; share?: boolean })
             {list?.map((it, i) => {
               return (
                 <a rel={"noreferrer"} href={it.url} key={i} target={"_blank"} className={"flex items-center justify-center gap-2 py-4 border border-pink-400 rounded-xl shadow-sm"}>
-                  <Bookmark size={16} className="text-red-500" />
+                  <Bookmark size={16} className="text-red-500 fill-red-400" />
                   <div className={"text-center"}>{it.title}</div>
                   <ExternalLink size={16} />
                 </a>
