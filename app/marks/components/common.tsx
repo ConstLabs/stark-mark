@@ -17,7 +17,7 @@ import useSWR from "swr";
 import { addMark, getBookMarkByAddress } from "@/services/marks";
 import { shortString } from "starknet";
 import toast from "react-hot-toast";
-import { Copy, CopyCheck, ExternalLink } from "lucide-react";
+import { Bookmark, Copy, CopyCheck, ExternalLink } from "lucide-react";
 import { useCopyToClipboard } from "react-use";
 import { useRouter } from "next/navigation";
 
@@ -196,7 +196,8 @@ export const Marks = ({ address, share }: { address?: string; share?: boolean })
           <div className={"grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6"}>
             {list?.map((it, i) => {
               return (
-                <a rel={"noreferrer"} href={it.url} key={i} target={"_blank"} className={"flex items-center justify-center gap-2"}>
+                <a rel={"noreferrer"} href={it.url} key={i} target={"_blank"} className={"flex items-center justify-center gap-2 py-4 border border-pink-400 rounded-xl shadow-sm"}>
+                  <Bookmark size={16} className="text-red-500" />
                   <div className={"text-center"}>{it.title}</div>
                   <ExternalLink size={16} />
                 </a>
