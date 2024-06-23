@@ -9,3 +9,13 @@ export const getLinkData = (url: string): Promise<any> => {
     }
   });
 };
+
+export const getShortUrl = (url: string): Promise<any> => {
+  return request({
+    method: "POST",
+    url: `/api/tinyurl`,
+    data: {
+      url
+    }
+  });
+};

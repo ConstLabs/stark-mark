@@ -1,6 +1,6 @@
 "use client";
 import { subtitle, title } from "@/components/primitives";
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import {
   Modal,
   ModalContent,
@@ -17,6 +17,7 @@ import { Listbox, ListboxItem } from "@nextui-org/react";
 import { AddNoteIcon, BookIcon, IconWrapper } from "@/components/icons";
 import { cn } from "@nextui-org/theme";
 import { Marks } from "@/app/marks/components/common";
+import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 const ListboxWrapper = ({ children }: { children: ReactNode }) => (
   <div className="w-[260px] border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100">
@@ -128,55 +129,16 @@ function CategoryList({
 }
 
 export default function MarksPage() {
-  const [category, setCategory] = useLocalStorage<string[]>("categories", []);
-
-  const [selectedKeys, setSelectedKeys] = useState(new Set([category?.[0] || ""]));
-
-  const [marks, setMarks] = useLocalStorage<any>("marks", {});
-
-  const handleCreateCategory = (v: string) => {
-    setCategory([...(category || []), v]);
-  };
-
-  const selectedValue = React.useMemo(() => Array.from(selectedKeys).join(", "), [selectedKeys]);
-
-  console.log(category, selectedKeys, marks, "cc");
-
+  const { primaryWallet } = useDynamicContext();
   return (
     <div>
       <div>
         <h1 className={cn(title({ color: "pink" }), "lg:text-3xl")}>Marks</h1>
         <h2 className={cn(subtitle())}>Organize your marks</h2>
       </div>
-      {category?.length ? (
-        <div className={"flex mt-6 gap-5"}>
-          <CategoryList
-            data={category}
-            onConfirm={handleCreateCategory}
-            selectedKeys={selectedKeys}
-            setSelectedKeys={setSelectedKeys}
-          />
-          <Marks
-            data={marks[selectedValue] || []}
-            addMark={(v) => {
-              setMarks({
-                ...marks,
-                [selectedValue]: [...(marks[selectedValue] || []), v]
-              });
-            }}
-          />
-        </div>
-      ) : (
-        <div>
-          <div className={"flex flex-col items-center w-full justify-center py-10"}>
-            <div className={"text-center mb-6"}>
-              <h1 className={"text-2xl font-bold"}>No category found</h1>
-              <p className={"text-gray-500 mt-2"}>Create category first</p>
-            </div>
-            <CreateCategoryModal onConfirm={handleCreateCategory} />
-          </div>
-        </div>
-      )}
+      <div className={"flex mt-6 gap-5"}>
+        <Marks address={primaryWallet?.address} />
+      </div>
     </div>
   );
 }

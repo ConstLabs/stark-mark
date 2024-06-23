@@ -1,0 +1,130 @@
+[
+  {
+    "name": "Starkmark",
+    "type": "impl",
+    "interface_name": "starkmark_test::IStarkmark"
+  },
+  {
+    "name": "starkmark_test::Bookmark",
+    "type": "struct",
+    "members": [
+      {
+        "name": "label",
+        "type": "core::felt252"
+      },
+      {
+        "name": "url",
+        "type": "core::felt252"
+      }
+    ]
+  },
+  {
+    "name": "starkmark_test::Starkmark::Person",
+    "type": "struct",
+    "members": [
+      {
+        "name": "address",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252"
+      }
+    ]
+  },
+  {
+    "name": "starkmark_test::IStarkmark",
+    "type": "interface",
+    "items": [
+      {
+        "name": "store_bookmark",
+        "type": "function",
+        "inputs": [
+          {
+            "name": "bookmark",
+            "type": "starkmark_test::Bookmark"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "name": "get_bookmark",
+        "type": "function",
+        "inputs": [
+          {
+            "name": "address",
+            "type": "core::starknet::contract_address::ContractAddress"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "core::array::Array::<starkmark_test::Bookmark>"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "name": "get_owner",
+        "type": "function",
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "starkmark_test::Starkmark::Person"
+          }
+        ],
+        "state_mutability": "view"
+      }
+    ]
+  },
+  {
+    "name": "constructor",
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "owner",
+        "type": "starkmark_test::Starkmark::Person"
+      }
+    ]
+  },
+  {
+    "name": "get_contract_bookmark",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "type": "core::felt252"
+      }
+    ],
+    "state_mutability": "view"
+  },
+  {
+    "kind": "struct",
+    "name": "starkmark_test::Starkmark::StoredBookmark",
+    "type": "event",
+    "members": [
+      {
+        "kind": "key",
+        "name": "user",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "kind": "data",
+        "name": "bookmark",
+        "type": "starkmark_test::Bookmark"
+      }
+    ]
+  },
+  {
+    "kind": "enum",
+    "name": "starkmark_test::Starkmark::Event",
+    "type": "event",
+    "variants": [
+      {
+        "kind": "nested",
+        "name": "StoredBookmark",
+        "type": "starkmark_test::Starkmark::StoredBookmark"
+      }
+    ]
+  }
+]

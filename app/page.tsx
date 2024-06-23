@@ -11,11 +11,9 @@ export default function Home() {
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
       <div className="inline-block max-w-lg text-center justify-center">
-        <h1 className={title()}>Make&nbsp;</h1>
-        <h1 className={title({ color: "violet" })}>decentralized&nbsp;</h1>
+        <h1 className={title()}><span className={title({ color: "violet" })}>Immutable&nbsp;</span> Bookmarks for a Changeable Web.&nbsp;</h1>
         <br />
-        <h1 className={title()}>bookmarks</h1>
-        <h2 className={subtitle({ class: "mt-4" })}>Store your bookmarks permanently, no trust required.</h2>
+        <h2 className={subtitle({ class: "mt-4" })}>Starkmark is a decentralized storage and sharing application layer based on Starknet. On Starkmark, you can easily create bookmarks to mark URIs and share them. Besides serving as a favorites list, you can also use Starkmark as your navigation site.</h2>
       </div>
 
       <div className="flex gap-3">
