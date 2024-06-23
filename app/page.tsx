@@ -23,7 +23,7 @@ export default function Home() {
             radius: "full",
             variant: "shadow"
           })}
-          href={siteConfig.links.docs}
+          href={'/marks'}
         >
           Try now
         </Link>
