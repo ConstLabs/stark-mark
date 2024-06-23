@@ -2,6 +2,7 @@
 
 Starkmark is a decentralized storage and sharing application layer based on Starknet. Starkmark has its unique Starknet contract as the protocol for data storage and sharing, which allows it to store and interact with data without being bound to a specific frontend. Of course, for this hackathon, we developed a frontend to demonstrate the functionality of Starkmark.
 
+Contract repo: https://github.com/ConstLabs/starkmark_contract
 
 
 ## Technologies Used
